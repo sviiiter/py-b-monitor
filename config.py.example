@@ -1,0 +1,12 @@
+bash_script_abs_file_name = 'bash/test_parameters.do'
+bash_script_param_rows = 5
+bash_script_param_page = 1
+bash_script_param_amount = 30000
+
+db_name = '/app/storage/avg_prices.db'
+
+telega_token = 'abcdzh'
+
+app_env = 'debug'
+
+telega_chat_id = '0000'
