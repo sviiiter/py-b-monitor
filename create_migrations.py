@@ -6,7 +6,7 @@ import config
 from enums import CurrencyEnum
 
 print('sqlite:///{}'.format(config.db_name))
-engine = db.create_engine('sqlite://{}'.format(config.db_name))
+engine = db.create_engine('sqlite:///{}'.format(config.db_name))
 connection = engine.connect()
 
 metadata = db.MetaData()
