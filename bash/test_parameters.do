@@ -5,7 +5,6 @@ _DEFAULT_AMOUNT=30000
 
 if [ -z "$APP_PATH" ];then
     APP_PATH='/app/'
-    echo "set new app path"
 fi
 
 while [ -n "$1" ]
