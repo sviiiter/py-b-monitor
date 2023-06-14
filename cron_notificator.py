@@ -35,3 +35,5 @@ if should_notice(data):
     connection.execute(
         create_migrations.avg_price_table.delete().where(avg_price_table.columns.currency == CurrencyEnum.KZT)
     )
+
+    connection.commit()

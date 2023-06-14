@@ -3,6 +3,11 @@ _DEFAULT_ROWS_COUNT=20;
 _DEFAULT_PAGE_NUMBER=1
 _DEFAULT_AMOUNT=30000
 
+if [ -z "$APP_PATH" ];then
+    APP_PATH='/app/'
+    echo "set new app path"
+fi
+
 while [ -n "$1" ]
 do
 case "$1" in
@@ -41,5 +46,5 @@ fi
 
 for (( i=1; i<=$PAGE; i++ ))
 do
-cat $(pwd)/bash/kzt_last_prices_buy.do | sed 's/<rows>/'"$ROWS"'/g; s/<page>/'"$i"'/g ;s/50000/'"$AMOUNT"'/g' | sh | jq -r '.data[] | [ .adv.price, .advertiser.nickName] | join(" ")'
+cat $APP_PATH"bash/kzt_last_prices_buy.do" | sed 's/<rows>/'"$ROWS"'/g; s/<page>/'"$i"'/g ;s/50000/'"$AMOUNT"'/g' | sh | jq -r '.data[] | [ .adv.price, .advertiser.nickName] | join(" ")'
 done
