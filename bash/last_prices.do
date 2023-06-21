@@ -1,0 +1,29 @@
+curl -s 'https://p2p.binance.com/bapi/c2c/v2/friendly/c2c/adv/search' \
+  -H 'authority: p2p.binance.com' \
+  -H 'accept: */*' \
+  -H 'accept-language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7,sr;q=0.6' \
+  -H 'bnc-uuid: bf176cd7-85a6-4573-9eeb-d551871ac571' \
+  -H 'c2ctype: c2c_merchant' \
+  -H 'cache-control: no-cache' \
+  -H 'clienttype: web' \
+  -H 'content-type: application/json' \
+  -H 'cookie: cid=yVNxyGfU; sys_mob=no; videoViewed=yes; BNC-Location=BINANCE; OptanonAlertBoxClosed=2022-12-17T12:08:35.933Z; _h_desk_key=fd9b1b13af0f4b67b989924b4e2a0f1d; showBlockMarket=false; _cq_duid=1.1678956878.uhqc8HmP45IPU1sT; _cq_suid=1.1678956878.b0YjYOyUIA5XDO1p; c2c-menu-ssct=false; c2c-menu-ssbt=false; bnc-uuid=bf176cd7-85a6-4573-9eeb-d551871ac571; source=referral; campaign=www.binance.com; theme=light; userPreferredCurrency=RUB_USD; fiat-prefer-currency=EUR; BNC_FV_KEY=335ff8d1bfb2a47189bfdbff9f05a33c11d6c3f4; se_sd=hkFFVVQRURbFB0CsbFwIgZZUwFgRVEXW1EAVfVUFlRWUwElNXWwL1; se_gd=1JbFlUBAITaCFEKMRExRgZZVgXQZQBXW1AVVfVUFlRWUwC1NXW0V1; _gid=GA1.2.1717362596.1685473166; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%22516480455%22%2C%22first_id%22%3A%2218858bca65b3c9-0fa09f91dfd54c8-1e525634-1296000-18858bca65ccd1%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22%24latest_referrer%22%3A%22%22%7D%2C%22identities%22%3A%22eyIkaWRlbnRpdHlfY29va2llX2lkIjoiMTg4NThiY2E2NWIzYzktMGZhMDlmOTFkZmQ1NGM4LTFlNTI1NjM0LTEyOTYwMDAtMTg4NThiY2E2NWNjZDEiLCIkaWRlbnRpdHlfbG9naW5faWQiOiI1MTY0ODA0NTUifQ%3D%3D%22%2C%22history_login_id%22%3A%7B%22name%22%3A%22%24identity_login_id%22%2C%22value%22%3A%22516480455%22%7D%2C%22%24device_id%22%3A%2218858bca65b3c9-0fa09f91dfd54c8-1e525634-1296000-18858bca65ccd1%22%7D; se_gsd=fzAmKzd8MAMiIyMqJAg2UykHUg5aDwIOVF1AUVFRW1RXHVNS1; lang=ru; d1og=web.516480455.64A85020150AA4C3E41427BDE8F68D90; r2o1=web.516480455.1BD3251C951B3A1D9C9FB70ED1A14D8E; f30l=web.516480455.68EFDDA9299FE66504D0A162C3A8378D; p20t=web.516480455.0EB8E812C29DA2EBFB90573B3A2FCE56; BNC_FV_KEY_EXPIRE=1685715968095; _gat_UA-162512367-1=1; _ga=GA1.2.955203283.1683797215; OptanonConsent=isGpcEnabled=0&datestamp=Fri+Jun+02+2023+11%3A38%3A59+GMT%2B0200+(%D0%A6%D0%B5%D0%BD%D1%82%D1%80%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F+%D0%95%D0%B2%D1%80%D0%BE%D0%BF%D0%B0%2C+%D0%BB%D0%B5%D1%82%D0%BD%D0%B5%D0%B5+%D0%B2%D1%80%D0%B5%D0%BC%D1%8F)&version=202211.1.0&geolocation=RS%3BVO&isIABGlobal=false&hosts=&consentId=0b7f6030-0772-4aa8-844a-163424a42ffc&interactionCount=1&landingPath=NotLandingPage&groups=C0001%3A1%2CC0003%3A1%2CC0004%3A1%2CC0002%3A1&AwaitingReconsent=false; common_fiat=RUB; _ga_3WP50LGEEC=GS1.1.1685698737.29.1.1685698752.45.0.0' \
+  -H 'csrftoken: d41d8cd98f00b204e9800998ecf8427e' \
+  -H 'device-info: eyJzY3JlZW5fcmVzb2x1dGlvbiI6IjkwMCwxNDQwIiwiYXZhaWxhYmxlX3NjcmVlbl9yZXNvbHV0aW9uIjoiOTAwLDE0NDAiLCJzeXN0ZW1fdmVyc2lvbiI6Ik1hYyBPUyAxMC4xNS43IiwiYnJhbmRfbW9kZWwiOiJ1bmtub3duIiwic3lzdGVtX2xhbmciOiJydS1SVSIsInRpbWV6b25lIjoiR01UKzIiLCJ0aW1lem9uZU9mZnNldCI6LTEyMCwidXNlcl9hZ2VudCI6Ik1vemlsbGEvNS4wIChNYWNpbnRvc2g7IEludGVsIE1hYyBPUyBYIDEwXzE1XzcpIEFwcGxlV2ViS2l0LzUzNy4zNiAoS0hUTUwsIGxpa2UgR2Vja28pIENocm9tZS8xMTEuMC4wLjAgU2FmYXJpLzUzNy4zNiIsImxpc3RfcGx1Z2luIjoiUERGIFZpZXdlcixDaHJvbWUgUERGIFZpZXdlcixDaHJvbWl1bSBQREYgVmlld2VyLE1pY3Jvc29mdCBFZGdlIFBERiBWaWV3ZXIsV2ViS2l0IGJ1aWx0LWluIFBERiIsImNhbnZhc19jb2RlIjoiMzRmMGNmODkiLCJ3ZWJnbF92ZW5kb3IiOiJHb29nbGUgSW5jLiAoSW50ZWwgSW5jLikiLCJ3ZWJnbF9yZW5kZXJlciI6IkFOR0xFIChJbnRlbCBJbmMuLCBJbnRlbCBJcmlzIFBybyBPcGVuR0wgRW5naW5lLCBPcGVuR0wgNC4xKSIsImF1ZGlvIjoiMTI0LjA0MzQ3NjU3ODA4MTAzIiwicGxhdGZvcm0iOiJNYWNJbnRlbCIsIndlYl90aW1lem9uZSI6IkV1cm9wZS9CZWxncmFkZSIsImRldmljZV9uYW1lIjoiQ2hyb21lIFYxMTEuMC4wLjAgKE1hYyBPUykiLCJmaW5nZXJwcmludCI6IjBlNWY2NzZjZjIwNDQyYzBiODg1ODAyMTkzYWM0MmQzIiwiZGV2aWNlX2lkIjoiIiwicmVsYXRlZF9kZXZpY2VfaWRzIjoiIn0=' \
+  -H 'fvideo-id: 335ff8d1bfb2a47189bfdbff9f05a33c11d6c3f4' \
+  -H 'lang: ru' \
+  -H 'origin: https://p2p.binance.com' \
+  -H 'pragma: no-cache' \
+  -H 'referer: https://p2p.binance.com/ru/trade/RosBankNew/USDT?fiat=RUB' \
+  -H 'sec-ch-ua: "Google Chrome";v="111", "Not(A:Brand";v="8", "Chromium";v="111"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "macOS"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-origin' \
+  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36' \
+  -H 'x-passthrough-token;' \
+  -H 'x-trace-id: e8d23048-e4b7-478b-a3a9-ea9280cd555e' \
+  -H 'x-ui-request-trace: e8d23048-e4b7-478b-a3a9-ea9280cd555e' \
+  --data-raw '{"fiat": "<fiat>", "page":  <page>, "rows": <rows>,"transAmount":<amount>,"tradeType":"<action>","asset":"USDT","countries":[],"proMerchantAds":false,"publisherType":null,"payTypes": <pay_types>}' \
+  --compressed

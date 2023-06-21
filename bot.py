@@ -15,10 +15,16 @@ def welcome(container_message: Message):
     debug('The telegram bot chat ID is', container_message.chat.id)
 
     config.bash_script_param_rows = 20
-    if len(command) == 2 and command[1].isnumeric():
-        config.bash_script_param_amount = int(command[1])
+
+    if len(command) >= 2 and type(command[1]) is str:
+        config.bash_script_param_fiat = command[1].upper()
+
+    if len(command) == 3 and command[2].isnumeric():
+        config.bash_script_param_amount = int(command[2])
 
     prices = binance_connector.execute_bash(config)
+
+    debug(prices)
 
     prices = [' -- '.join(i) for i in prices]
 

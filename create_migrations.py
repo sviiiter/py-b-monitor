@@ -28,7 +28,8 @@ settings_table = db.Table('settings', metadata,
 if __name__ == '__main__':
     metadata.create_all(engine)
     default_value_query = settings_table.insert().values([
-        {'delta_amount': 1, 'currency': CurrencyEnum.KZT.value}
+        {'delta_amount': 1, 'currency': CurrencyEnum.KZT.value},
+        {'delta_amount': 1, 'currency': CurrencyEnum.RUB.value}
     ])
     rs = connection.execute(default_value_query)
     connection.commit()

@@ -2,14 +2,15 @@ import subprocess
 
 
 def execute_bash(cmd_items) -> list:
-    rc = subprocess.check_output(
-        "{} -rows {} -page {} -amount {}".format(
-            cmd_items.bash_script_abs_file_name,
-            cmd_items.bash_script_param_rows,
-            cmd_items.bash_script_param_page,
-            cmd_items.bash_script_param_amount
-        ), shell=True
-    ).decode('utf-8')
+    con_str = "{} -rows {} -page {} -amount {} -fiat {}".format(
+        cmd_items.bash_script_abs_file_name,
+        cmd_items.bash_script_param_rows,
+        cmd_items.bash_script_param_page,
+        cmd_items.bash_script_param_amount,
+        cmd_items.bash_script_param_fiat
+    )
+
+    rc = subprocess.check_output(con_str, shell=True).decode('utf-8')
 
     return [i.split(' ') for i in rc.split('\n')]
 

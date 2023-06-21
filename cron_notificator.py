@@ -6,8 +6,6 @@ from config import telega_chat_id
 from create_migrations import avg_price_table, connection, settings_table
 from enums import CurrencyEnum
 
-settings = connection.execute(settings_table.select()).fetchone()
-
 
 def extract_prev_current_prices(currency: CurrencyEnum) -> list:
     query = create_migrations.db.select(avg_price_table).limit(20) \
@@ -24,16 +22,24 @@ def extract_prev_current_prices(currency: CurrencyEnum) -> list:
     ]
 
 
-def should_notice(prices: list) -> bool:
-    return settings[1] <= abs(prices[1] - prices[0])
+def should_notice(prices: list, sittings_currency: list) -> bool:
+    return sittings_currency[1] <= abs(prices[1] - prices[0])
 
 
-data = extract_prev_current_prices(CurrencyEnum.KZT)
-
-if should_notice(data):
-    bot.send_message(chat_id=telega_chat_id, text='{} -> {}'.format(data[0], data[1]))
+def transfer(prices: list, currency: int):
+    bot.send_message(chat_id=telega_chat_id, text='{} -> {}'.format(prices[0], prices[1]))
     connection.execute(
-        create_migrations.avg_price_table.delete().where(avg_price_table.columns.currency == CurrencyEnum.KZT)
+        avg_price_table.delete().where(avg_price_table.columns.currency == currency)
     )
 
     connection.commit()
+
+
+for i in [CurrencyEnum.KZT, CurrencyEnum.RUB]:
+    settings = connection.execute(
+        settings_table.select().where(settings_table.columns.currency == i)
+    ).fetchone()
+
+    data = extract_prev_current_prices(i)
+    if should_notice(data, settings):
+        transfer(data, i)
