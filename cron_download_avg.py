@@ -2,7 +2,7 @@ from enums import CurrencyEnum
 
 if __name__ == '__main__':
     import config
-    from binance_connector import execute_bash, avg_price
+    from bash import execute_bash, avg_price
     from create_migrations import avg_price_table, connection
 
     curr_amount = {

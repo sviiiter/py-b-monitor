@@ -1,9 +1,9 @@
 import telebot
 from telebot.types import Message
 
-import binance_connector
-import config
+import bash
 from config import telega_token, telega_chat_id
+from enums import PlatformEnum
 from logger import debug
 
 bot = telebot.TeleBot(telega_token, parse_mode='HTML')
@@ -14,19 +14,21 @@ def welcome(container_message: Message):
     command = container_message.text.split('_')
     debug('The telegram bot chat ID is', container_message.chat.id)
 
-    config.bash_script_param_rows = 20
+    if len(command) < 3:
+        raise IOError('Incorrect command')
 
-    if len(command) >= 2 and type(command[1]) is str:
-        config.bash_script_param_fiat = command[1].upper()
+    platform = PlatformEnum[command[1].upper()]
+    fiat = command[2].upper()
 
-    if len(command) == 3 and command[2].isnumeric():
-        config.bash_script_param_amount = int(command[2])
-
-    prices = binance_connector.execute_bash(config)
+    prices = bash.execute_bash(
+        bash.get_curl_filename(platform.name.lower(), fiat),
+        bash.get_filter_filename(platform.name.lower())
+    )
 
     debug(prices)
 
-    prices = [' -- '.join(i) for i in prices]
+    prices = [' -- '.join(list(i.values())[::-1])
+              for i in prices]
 
     bot.send_message(chat_id=telega_chat_id, text='\n'.join(prices))
 
