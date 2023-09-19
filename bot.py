@@ -1,7 +1,7 @@
 import telebot
 from telebot.types import Message
 
-import bash
+import bash_processor
 from config import telega_token, telega_chat_id
 from enums import PlatformEnum
 from logger import debug
@@ -20,9 +20,9 @@ def welcome(container_message: Message):
     platform = PlatformEnum[command[1].upper()]
     fiat = command[2].upper()
 
-    prices = bash.execute_bash(
-        bash.get_curl_filename(platform.name.lower(), fiat),
-        bash.get_filter_filename(platform.name.lower())
+    prices = bash_processor.execute_bash(
+        bash_processor.get_curl_filename(platform.name.lower(), fiat),
+        bash_processor.get_filter_filename(platform.name.lower())
     )
 
     debug(prices)
