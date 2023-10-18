@@ -4,9 +4,13 @@ import subprocess
 from config import app_path
 
 
-def execute_bash(curl_file: str, pipe_filters_file: str) -> list[dict]:
-    con_str = "cat {} | sh | {}".format(
+def execute_bash(curl_file: str, pipe_filters_file: str, amount=False) -> list[dict]:
+
+    part_amount_str: str = '-amount {}'.format(amount) if amount is not False else ''
+
+    con_str = "cat {} | sh -s -- {} | {}".format(
         curl_file,
+        part_amount_str,
         pipe_filters_file
     )
 

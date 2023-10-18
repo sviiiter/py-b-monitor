@@ -1,4 +1,34 @@
-curl -s 'https://www.okx.com/v3/c2c/tradingOrders/books?t=1694959378635&quoteCurrency=kzt&baseCurrency=usdt&side=sell&paymentMethod=Kaspi+Bank&userType=all&showTrade=false&showFollow=false&showAlreadyTraded=false&isAbleFilter=false&hideOverseasVerificationAds=false&quoteMinAmountPerOrder=5000&sortType=price_asc' \
+_DEFAULT_AMOUNT=5000
+
+while [ -n "$1" ]
+do
+case "$1" in
+-h)
+
+    Help
+    exit
+    shift;;
+
+-amount)
+    AMOUNT="$2"
+    shift;;
+
+--)
+    shift
+    break ;;
+
+*)
+    echo "$1 is not an option";;
+
+esac
+shift
+done
+
+if [ -z ${AMOUNT} ];then
+    AMOUNT=$_DEFAULT_AMOUNT
+fi
+
+curl -s "https://www.okx.com/v3/c2c/tradingOrders/books?t=1694959378635&quoteCurrency=kzt&baseCurrency=usdt&side=sell&paymentMethod=Kaspi+Bank&userType=all&showTrade=false&showFollow=false&showAlreadyTraded=false&isAbleFilter=false&hideOverseasVerificationAds=false&quoteMinAmountPerOrder=$AMOUNT&sortType=price_asc" \
   -H 'authority: www.okx.com' \
   -H 'accept: application/json' \
   -H 'accept-language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7,sr;q=0.6' \

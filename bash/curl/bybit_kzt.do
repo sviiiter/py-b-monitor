@@ -1,3 +1,34 @@
+_DEFAULT_AMOUNT=40000
+
+while [ -n "$1" ]
+do
+case "$1" in
+-h)
+
+    Help
+    exit
+    shift;;
+
+-amount)
+    AMOUNT="$2"
+    shift;;
+
+--)
+    shift
+    break ;;
+
+*)
+    echo "$1 is not an option";;
+
+esac
+shift
+done
+
+if [ -z ${AMOUNT} ];then
+    AMOUNT=$_DEFAULT_AMOUNT
+fi
+
+
 curl -s 'https://api2.bybit.com/fiat/otc/item/online' \
   -H 'authority: api2.bybit.com' \
   -H 'accept: application/json' \
@@ -21,5 +52,5 @@ curl -s 'https://api2.bybit.com/fiat/otc/item/online' \
   -H 'traceparent: 00-0885dd4ef1468388d02cfbf45408d66b-84175c14ca626b4c-01' \
   -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36' \
   -H 'usertoken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTUyOTAxNTIsInVzZXJfaWQiOjEwMDY2MjQ3OSwibm9uY2UiOiI3YTgyMjQ0YyIsImdlbl90cyI6MTY5NTAzMDk1MiwicCI6MywiZXh0Ijp7Im1jdCI6IjE2OTMwNjQyMjciLCJzaWQiOiIifX0.bDWM6sivaLKeZ4QCnu0u4fFv3iqOpwOw-DmsRfojCCw' \
-  --data-raw '{"userId":100662479,"tokenId":"USDT","currencyId":"KZT","payment":["150"],"side":"1","size":"10","page":"1","amount":"40000","authMaker":false,"canTrade":false}' \
+  --data-raw '{"userId":100662479,"tokenId":"USDT","currencyId":"KZT","payment":["150"],"side":"1","size":"10","page":"1","amount":"'$AMOUNT'","authMaker":false,"canTrade":false}' \
   --compressed

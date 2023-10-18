@@ -19,15 +19,17 @@ def welcome(container_message: Message):
 
     platform = PlatformEnum[command[1].upper()]
     fiat = command[2].upper()
+    amount = command[3].upper() if len(command) >= 4 else False
 
     prices = bash_processor.execute_bash(
         bash_processor.get_curl_filename(platform.name.lower(), fiat),
-        bash_processor.get_filter_filename(platform.name.lower())
+        bash_processor.get_filter_filename(platform.name.lower()),
+        amount
     )
 
     debug(prices)
 
-    prices = [' -- '.join(list(i.values())[::-1])
+    prices = ['{price} -- {name}, ${available}, ({min}-{max})'.format(**i)
               for i in prices]
 
     bot.send_message(chat_id=telega_chat_id, text='\n'.join(prices))
